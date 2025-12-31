@@ -11,6 +11,7 @@
         rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -46,7 +47,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-white text-slate-800 antialiased">
+<body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 antialiased transition-colors duration-300">
 
     <!-- Top Bar -->
     <div class="bg-[#0ea5e9] text-white py-2 px-4 text-sm">
@@ -68,7 +69,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="bg-white border-b border-slate-100 sticky top-0 z-50">
+    <nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 sticky top-0 z-50 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <!-- Logo -->
@@ -78,24 +79,31 @@
                         <i class="fa-solid fa-lightbulb text-xl"></i>
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-bold text-xl tracking-tight text-slate-900 leading-none">HTiF</span>
-                        <span class="text-[10px] text-slate-500 font-medium tracking-wide">Health Tech Innovators</span>
+                        <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white leading-none">HTiF</span>
+                        <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium tracking-wide">Health Tech Innovators</span>
                     </div>
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-slate-600 hover:text-[#0ea5e9] font-medium transition">About</a>
-                    <a href="#mission" class="text-slate-600 hover:text-[#0ea5e9] font-medium transition">Mission</a>
-                    <a href="#" class="text-slate-600 hover:text-[#0ea5e9] font-medium transition">Membership</a>
+                    <a href="#about"
+                        class="animated-underline text-slate-600 dark:text-slate-300 hover:text-[#0ea5e9] dark:hover:text-[#0ea5e9] font-medium transition">About</a>
+                    <a href="#mission"
+                        class="animated-underline text-slate-600 dark:text-slate-300 hover:text-[#0ea5e9] dark:hover:text-[#0ea5e9] font-medium transition">Mission</a>
+                    <a href="#membership"
+                        class="animated-underline text-slate-600 dark:text-slate-300 hover:text-[#0ea5e9] dark:hover:text-[#0ea5e9] font-medium transition">Membership</a>
                     <a href="#activities"
-                        class="text-slate-600 hover:text-[#0ea5e9] font-medium transition">Activities</a>
-                    <a href="#" class="text-slate-600 hover:text-[#0ea5e9] font-medium transition">Contact</a>
+                        class="animated-underline text-slate-600 dark:text-slate-300 hover:text-[#0ea5e9] dark:hover:text-[#0ea5e9] font-medium transition">Activities</a>
+                    <a href="#contact"
+                        class="animated-underline text-slate-600 dark:text-slate-300 hover:text-[#0ea5e9] dark:hover:text-[#0ea5e9] font-medium transition">Contact</a>
                 </div>
 
                 <!-- Right Actions -->
                 <div class="hidden md:flex items-center gap-6">
-                    <a href="#" class="text-slate-500 hover:text-slate-800 transition">
+                    <button id="theme-toggle" class="text-slate-500 hover:text-[#0ea5e9] transition focus:outline-none">
+                        <i class="fa-regular fa-moon text-xl"></i>
+                    </button>
+                    <a href="#" class="text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white transition">
                         <i class="fa-regular fa-user text-lg"></i>
                     </a>
                     <a href="#"
@@ -114,10 +122,16 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100">
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors duration-300">
             <div class="px-4 pt-2 pb-4 space-y-1">
-                <a href="#"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-[#0ea5e9] hover:bg-slate-50">About</a>
+                <div class="flex justify-between items-center px-3 py-2">
+                    <span class="text-slate-700 dark:text-slate-200 font-medium">Dark Mode</span>
+                    <button id="mobile-theme-toggle" class="text-slate-500 hover:text-[#0ea5e9] transition focus:outline-none">
+                        <i class="fa-regular fa-moon text-xl"></i>
+                    </button>
+                </div>
+                <a href="#about"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:text-[#0ea5e9] hover:bg-slate-50 dark:hover:bg-slate-800">About</a>
                 <a href="#mission"
                     class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-[#0ea5e9] hover:bg-slate-50">Mission</a>
                 <a href="#"
@@ -139,53 +153,51 @@
     </nav>
 
     <!-- Hero Section -->
-    <section
-        class="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
+    <section id="about"
+        class="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
                 <!-- Left Content -->
                 <div class="max-w-2xl">
                     <div
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-[#0ea5e9] text-sm font-semibold mb-8">
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-700/50 text-[#0ea5e9] text-sm font-semibold mb-8">
                         <i class="fa-solid fa-rocket"></i>
                         <span>Youth-Driven Innovation</span>
                     </div>
 
-                    <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-6 leading-tight">
+                    <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-6 leading-tight slide-up">
                         Transforming <br>
                         Healthcare Through <br>
-                        <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-[#0ea5e9] to-purple-600">Innovation</span>
+                        <span class="gradient-text">Innovation</span>
                     </h1>
 
-                    <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-lg">
-                        To be a global hub for transformative health technology innovations that enhance healthcare
-                        access, efficiency, and quality for all.
+                    <p class="text-lg text-slate-600 dark:text-slate-300 mb-10 leading-relaxed max-w-lg slide-up" style="animation-delay: 0.2s;">
+                        The Health Tech Innovators Forum (HTiF) is a collaborative, youth-driven, non-profit association dedicated to advancing innovation in health technology.
                     </p>
 
-                    <div class="flex flex-wrap gap-4 mb-16">
-                        <a href="#"
-                            class="bg-[#0ea5e9] hover:bg-[#0284c7] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-blue-500/30 transition transform hover:-translate-y-1">
+                    <div class="flex flex-wrap gap-4 mb-16 fade-in" style="animation-delay: 0.4s;">
+                        <a href="#membership"
+                            class="btn-shine bg-[#0ea5e9] hover:bg-[#0284c7] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-blue-500/30 transition transform hover:-translate-y-1">
                             Become a Member
                         </a>
-                        <a href="#"
-                            class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-4 rounded-full font-bold text-lg shadow-sm transition transform hover:-translate-y-1">
+                        <a href="#activities"
+                            class="btn-shine bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-white border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-full font-bold text-lg shadow-sm transition transform hover:-translate-y-1">
                             Explore Programs
                         </a>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-8 border-t border-slate-200 pt-8">
+                    <div id="stats" class="grid grid-cols-3 gap-8 border-t border-slate-200 dark:border-slate-700 pt-8">
                         <div>
-                            <div class="text-3xl font-bold text-[#0ea5e9] mb-1">1000+</div>
-                            <div class="text-sm text-slate-500 font-medium">Young Innovators</div>
+                            <div class="text-3xl font-bold text-[#0ea5e9] mb-1"><span class="counter" data-target="1000">0</span>+</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Young Innovators</div>
                         </div>
-                        <div class="border-l border-slate-200 pl-8">
-                            <div class="text-3xl font-bold text-purple-600 mb-1">50+</div>
-                            <div class="text-sm text-slate-500 font-medium">Innovation Projects</div>
+                        <div class="border-l border-slate-200 dark:border-slate-700 pl-8">
+                            <div class="text-3xl font-bold text-purple-600 mb-1"><span class="counter" data-target="50">0</span>+</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Innovation Projects</div>
                         </div>
-                        <div class="border-l border-slate-200 pl-8">
-                            <div class="text-3xl font-bold text-[#0ea5e9] mb-1">15+</div>
-                            <div class="text-sm text-slate-500 font-medium">Partner Institutions</div>
+                        <div class="border-l border-slate-200 dark:border-slate-700 pl-8">
+                            <div class="text-3xl font-bold text-[#0ea5e9] mb-1"><span class="counter" data-target="15">0</span>+</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Partner Institutions</div>
                         </div>
                     </div>
                 </div>
@@ -208,86 +220,161 @@
         </div>
     </section>
 
+    <!-- Partners Section (Infinite Marquee) -->
+    <section class="py-10 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 mb-6 text-center">
+            <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Trusted by Leading Institutions</p>
+        </div>
+        <div class="relative flex overflow-x-hidden group">
+            <div class="animate-marquee whitespace-nowrap flex items-center gap-12 px-12">
+                <!-- Partner 1 -->
+                <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                    <i class="fa-solid fa-hospital text-3xl"></i>
+                    <span class="font-bold text-xl">MedTech Global</span>
+                </div>
+                <!-- Partner 2 -->
+                <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                    <i class="fa-solid fa-university text-3xl"></i>
+                    <span class="font-bold text-xl">Health Uni</span>
+                </div>
+                <!-- Partner 3 -->
+                <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                    <i class="fa-solid fa-flask text-3xl"></i>
+                    <span class="font-bold text-xl">Innovate Labs</span>
+                </div>
+                <!-- Partner 4 -->
+                <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                    <i class="fa-solid fa-heart-pulse text-3xl"></i>
+                    <span class="font-bold text-xl">CarePlus</span>
+                </div>
+                <!-- Partner 5 -->
+                <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                    <i class="fa-solid fa-dna text-3xl"></i>
+                    <span class="font-bold text-xl">Genomics Africa</span>
+                </div>
+                 <!-- Partner 6 -->
+                 <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                    <i class="fa-solid fa-microchip text-3xl"></i>
+                    <span class="font-bold text-xl">TechHealth</span>
+                </div>
+            </div>
+
+            <!-- Duplicate for seamless loop -->
+            <div class="absolute top-0 py-12 animate-marquee2 whitespace-nowrap flex items-center gap-12 px-12">
+               <!-- Partner 1 -->
+               <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                <i class="fa-solid fa-hospital text-3xl"></i>
+                <span class="font-bold text-xl">MedTech Global</span>
+            </div>
+            <!-- Partner 2 -->
+            <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                <i class="fa-solid fa-university text-3xl"></i>
+                <span class="font-bold text-xl">Health Uni</span>
+            </div>
+            <!-- Partner 3 -->
+            <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                <i class="fa-solid fa-flask text-3xl"></i>
+                <span class="font-bold text-xl">Innovate Labs</span>
+            </div>
+            <!-- Partner 4 -->
+            <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                <i class="fa-solid fa-heart-pulse text-3xl"></i>
+                <span class="font-bold text-xl">CarePlus</span>
+            </div>
+            <!-- Partner 5 -->
+            <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                <i class="fa-solid fa-dna text-3xl"></i>
+                <span class="font-bold text-xl">Genomics Africa</span>
+            </div>
+             <!-- Partner 6 -->
+             <div class="flex items-center gap-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                <i class="fa-solid fa-microchip text-3xl"></i>
+                <span class="font-bold text-xl">TechHealth</span>
+            </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Mission & Goals Section -->
-    <section id="mission" class="py-20 bg-slate-50">
+    <section id="mission" class="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Our Mission</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">Our Mission</h2>
                     <div class="space-y-6">
-                        <div class="flex gap-4">
+                        <div class="flex gap-4 fade-in">
                             <div
-                                class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-[#0ea5e9] flex-shrink-0">
+                                class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-[#0ea5e9] flex-shrink-0">
                                 <i class="fa-solid fa-lightbulb"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2">Innovate</h3>
-                                <p class="text-slate-600">Support the development of pioneering health technologies that
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Innovate</h3>
+                                <p class="text-slate-600 dark:text-slate-300">Support the development of pioneering health technologies that
                                     address pressing healthcare challenges.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
+                        <div class="flex gap-4 fade-in" style="animation-delay: 0.1s;">
                             <div
-                                class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
+                                class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 flex-shrink-0">
                                 <i class="fa-solid fa-handshake"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2">Collaborate</h3>
-                                <p class="text-slate-600">Build a strong network of multidisciplinary professionals,
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Collaborate</h3>
+                                <p class="text-slate-600 dark:text-slate-300">Build a strong network of multidisciplinary professionals,
                                     researchers, and institutions to foster innovation.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
+                        <div class="flex gap-4 fade-in" style="animation-delay: 0.2s;">
                             <div
-                                class="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center text-teal-600 flex-shrink-0">
+                                class="w-12 h-12 rounded-xl bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center text-teal-600 flex-shrink-0">
                                 <i class="fa-solid fa-graduation-cap"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2">Educate</h3>
-                                <p class="text-slate-600">Promote continuous learning, capacity-building, and awareness
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Educate</h3>
+                                <p class="text-slate-600 dark:text-slate-300">Promote continuous learning, capacity-building, and awareness
                                     of emerging health technologies.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
+                        <div class="flex gap-4 fade-in" style="animation-delay: 0.3s;">
                             <div
-                                class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 flex-shrink-0">
+                                class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 flex-shrink-0">
                                 <i class="fa-solid fa-bullhorn"></i>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2">Advocate</h3>
-                                <p class="text-slate-600">Influence policies, systems, and initiatives that promote
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Advocate</h3>
+                                <p class="text-slate-600 dark:text-slate-300">Influence policies, systems, and initiatives that promote
                                     ethical and responsible use of digital and emerging technologies in healthcare.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-100">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Strategic Goals</h3>
+                <div class="hover-lift bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700">
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Strategic Goals</h3>
                     <ul class="space-y-4">
-                        <li class="flex gap-3 text-slate-600">
-                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1"></i>
-                            <span>Empower young innovators (18–35) with knowledge, skills, and tools.</span>
+                        <li class="flex gap-3 text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1 flex-shrink-0"></i>
+                            <span>To empower young innovators (18–35) with the knowledge, skills, and tools needed to develop health technology solutions.</span>
                         </li>
-                        <li class="flex gap-3 text-slate-600">
-                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1"></i>
-                            <span>Strengthen collaboration between health and technology sectors.</span>
+                        <li class="flex gap-3 text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1 flex-shrink-0"></i>
+                            <span>To strengthen collaboration between health and technology sectors through events, hackathons, and innovation challenges.</span>
                         </li>
-                        <li class="flex gap-3 text-slate-600">
-                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1"></i>
-                            <span>Promote research, innovation, and entrepreneurship in health technology.</span>
+                        <li class="flex gap-3 text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1 flex-shrink-0"></i>
+                            <span>To promote research, innovation, and entrepreneurship in health technology across Nigeria and Africa.</span>
                         </li>
-                        <li class="flex gap-3 text-slate-600">
-                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1"></i>
-                            <span>Support development of scalable, affordable digital health innovations.</span>
+                        <li class="flex gap-3 text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1 flex-shrink-0"></i>
+                            <span>To support the development and adoption of scalable, affordable, and impactful digital health innovations.</span>
                         </li>
-                        <li class="flex gap-3 text-slate-600">
-                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1"></i>
-                            <span>Build a sustainable ecosystem of youth-led health tech innovators.</span>
+                        <li class="flex gap-3 text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1 flex-shrink-0"></i>
+                            <span>To build a sustainable ecosystem of youth-led health tech innovators contributing to national and global health goals.</span>
                         </li>
-                        <li class="flex gap-3 text-slate-600">
-                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1"></i>
-                            <span>Engage policymakers in promoting technology-driven healthcare reforms.</span>
+                        <li class="flex gap-3 text-slate-600 dark:text-slate-300">
+                            <i class="fa-solid fa-check-circle text-[#0ea5e9] mt-1 flex-shrink-0"></i>
+                            <span>To engage policymakers and stakeholders in promoting technology-driven healthcare reforms.</span>
                         </li>
                     </ul>
                 </div>
@@ -296,94 +383,94 @@
     </section>
 
     <!-- Core Values Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Core Values</h2>
-                <p class="text-lg text-slate-600 max-w-2xl mx-auto">The principles that guide everything we do</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Core Values</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">The principles that guide everything we do</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Value 1 -->
                 <div
-                    class="bg-white p-8 rounded-2xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition duration-300 group">
+                    class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/50 dark:shadow-none hover:shadow-xl transition duration-300 group fade-in">
                     <div
-                        class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-[#0ea5e9] mb-6 group-hover:scale-110 transition duration-300">
+                        class="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-[#0ea5e9] mb-6 group-hover:scale-110 transition duration-300">
                         <i class="fa-regular fa-lightbulb text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Innovation & Creativity</h3>
-                    <p class="text-slate-600 leading-relaxed">Fostering breakthrough ideas and creative solutions to
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Innovation & Creativity</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Fostering breakthrough ideas and creative solutions to
                         healthcare challenges.</p>
                 </div>
 
                 <!-- Value 2 -->
                 <div
-                    class="bg-white p-8 rounded-2xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition duration-300 group">
+                    class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/50 dark:shadow-none hover:shadow-xl transition duration-300 group fade-in" style="animation-delay: 0.1s;">
                     <div
-                        class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-teal-500 mb-6 group-hover:scale-110 transition duration-300">
+                        class="w-12 h-12 bg-teal-50 dark:bg-teal-900/30 rounded-xl flex items-center justify-center text-teal-500 mb-6 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-users text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Collaboration & Networking</h3>
-                    <p class="text-slate-600 leading-relaxed">Building strong partnerships across disciplines and
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Collaboration & Networking</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Building strong partnerships across disciplines and
                         sectors.</p>
                 </div>
 
                 <!-- Value 3 -->
                 <div
-                    class="bg-white p-8 rounded-2xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition duration-300 group">
+                    class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/50 dark:shadow-none hover:shadow-xl transition duration-300 group fade-in" style="animation-delay: 0.2s;">
                     <div
-                        class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500 mb-6 group-hover:scale-110 transition duration-300">
+                        class="w-12 h-12 bg-purple-50 dark:bg-purple-900/30 rounded-xl flex items-center justify-center text-purple-500 mb-6 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-medal text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Excellence & Professionalism</h3>
-                    <p class="text-slate-600 leading-relaxed">Maintaining highest standards in all our initiatives and
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Excellence & Professionalism</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Maintaining highest standards in all our initiatives and
                         programs.</p>
                 </div>
 
                 <!-- Value 4 -->
                 <div
-                    class="bg-white p-8 rounded-2xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition duration-300 group">
+                    class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/50 dark:shadow-none hover:shadow-xl transition duration-300 group fade-in" style="animation-delay: 0.3s;">
                     <div
-                        class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition duration-300">
+                        class="w-12 h-12 bg-red-50 dark:bg-red-900/30 rounded-xl flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition duration-300">
                         <i class="fa-regular fa-heart text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Ethics & Patient-Centred Care</h3>
-                    <p class="text-slate-600 leading-relaxed">Prioritizing ethical practices and patient welfare in all
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Ethics & Patient-Centred Care</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Prioritizing ethical practices and patient welfare in all
                         solutions.</p>
                 </div>
 
                 <!-- Value 5 -->
                 <div
-                    class="bg-white p-8 rounded-2xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition duration-300 group">
+                    class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/50 dark:shadow-none hover:shadow-xl transition duration-300 group fade-in" style="animation-delay: 0.4s;">
                     <div
-                        class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-500 mb-6 group-hover:scale-110 transition duration-300">
+                        class="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-500 mb-6 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-universal-access text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Inclusivity & Accessibility</h3>
-                    <p class="text-slate-600 leading-relaxed">Ensuring health tech solutions reach and benefit all
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Inclusivity & Accessibility</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Ensuring health tech solutions reach and benefit all
                         communities.</p>
                 </div>
 
                 <!-- Value 6 -->
                 <div
-                    class="bg-white p-8 rounded-2xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition duration-300 group">
+                    class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/50 dark:shadow-none hover:shadow-xl transition duration-300 group fade-in" style="animation-delay: 0.5s;">
                     <div
-                        class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 mb-6 group-hover:scale-110 transition duration-300">
+                        class="w-12 h-12 bg-orange-50 dark:bg-orange-900/30 rounded-xl flex items-center justify-center text-orange-500 mb-6 group-hover:scale-110 transition duration-300">
                         <i class="fa-regular fa-eye text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Transparency & Accountability</h3>
-                    <p class="text-slate-600 leading-relaxed">Operating with openness and taking responsibility for our
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Transparency & Accountability</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Operating with openness and taking responsibility for our
                         actions.</p>
                 </div>
             </div>
         </div>
     </section>
     <!-- Membership Section -->
-    <section class="py-20 bg-slate-50">
+    <section id="membership" class="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Membership Eligibility</h2>
-                <p class="text-lg text-slate-600">Join a community of passionate health tech innovators</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Membership Eligibility</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-300">Join a community of passionate health tech innovators</p>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -392,12 +479,12 @@
                     <!-- Item 1 -->
                     <div class="flex gap-4">
                         <div
-                            class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-[#0ea5e9]">
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-[#0ea5e9]">
                             <i class="fa-regular fa-calendar-check"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-1">Age Requirement</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Must be between 18 and 35 years old at the
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Age Requirement</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Must be between 18 and 35 years old at the
                                 time of application</p>
                         </div>
                     </div>
@@ -405,12 +492,12 @@
                     <!-- Item 2 -->
                     <div class="flex gap-4">
                         <div
-                            class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center text-teal-600">
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center text-teal-600">
                             <i class="fa-solid fa-fire"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-1">Passion & Interest</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Demonstrate interest in health,
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Passion & Interest</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Demonstrate interest in health,
                                 technology, innovation, or entrepreneurship</p>
                         </div>
                     </div>
@@ -418,20 +505,21 @@
                     <!-- Item 3 -->
                     <div class="flex gap-4">
                         <div
-                            class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600">
                             <i class="fa-solid fa-users-viewfinder"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-1">Background</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-2">Open to individuals from diverse
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Background</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-2">Open to individuals from diverse
                                 fields, including:</p>
-                            <ul class="text-slate-600 text-xs space-y-1 list-disc list-inside ml-1">
-                                <li>Healthcare (Medicine, Nursing, Public Health, Pharmacy, etc.)</li>
+                            <ul class="text-slate-600 dark:text-slate-300 text-xs space-y-1 list-disc list-inside ml-1">
+                                <li>Healthcare (Medicine, Nursing, Public Health, Lab Science, Pharmacy, etc.)</li>
                                 <li>Engineering & ICT</li>
                                 <li>Data Science & AI</li>
                                 <li>Software Development</li>
                                 <li>Research & Academia</li>
                                 <li>Business, Innovation & Entrepreneurship</li>
+                                <li>Youth leaders passionate about digital health</li>
                             </ul>
                         </div>
                     </div>
@@ -439,12 +527,12 @@
                     <!-- Item 4 -->
                     <div class="flex gap-4">
                         <div
-                            class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-1">Ethical Conduct</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Must uphold HTiF's values of ethics,
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Ethical Conduct</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Must uphold HTiF's values of ethics,
                                 professionalism, inclusivity, and respect</p>
                         </div>
                     </div>
@@ -452,12 +540,12 @@
                     <!-- Item 5 -->
                     <div class="flex gap-4">
                         <div
-                            class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center text-teal-600">
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center text-teal-600">
                             <i class="fa-solid fa-hands-holding-circle"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-1">Active Participation</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Willing to participate in programs,
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Active Participation</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Willing to participate in programs,
                                 workshops, trainings, and community projects</p>
                         </div>
                     </div>
@@ -471,49 +559,49 @@
                 </div>
 
                 <!-- Right: Process & Benefits -->
-                <div class="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100">
-                    <h3 class="text-xl font-bold text-slate-900 mb-6">Application Process</h3>
+                <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-700">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Application Process</h3>
 
                     <div class="space-y-4 mb-8">
-                        <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
                             <div
                                 class="w-8 h-8 rounded-full bg-[#0ea5e9] text-white flex items-center justify-center font-bold text-sm">
                                 1</div>
-                            <span class="text-slate-700 font-medium">Complete the membership form</span>
+                            <span class="text-slate-700 dark:text-slate-200 font-medium">Complete the membership form</span>
                         </div>
-                        <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
                             <div
                                 class="w-8 h-8 rounded-full bg-[#0ea5e9] text-white flex items-center justify-center font-bold text-sm">
                                 2</div>
-                            <span class="text-slate-700 font-medium">Submit ID verifying age</span>
+                            <span class="text-slate-700 dark:text-slate-200 font-medium">Submit ID verifying age</span>
                         </div>
-                        <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
                             <div
                                 class="w-8 h-8 rounded-full bg-[#0ea5e9] text-white flex items-center justify-center font-bold text-sm">
                                 3</div>
-                            <span class="text-slate-700 font-medium">Attend orientation (online or physical)</span>
+                            <span class="text-slate-700 dark:text-slate-200 font-medium">Attend orientation (online or physical)</span>
                         </div>
                     </div>
 
-                    <div class="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-6 border border-blue-100 dark:border-blue-800/50">
                         <div class="flex items-center gap-2 mb-4">
                             <i class="fa-solid fa-star text-yellow-500"></i>
-                            <h4 class="font-bold text-slate-900">Member Benefits</h4>
+                            <h4 class="font-bold text-slate-900 dark:text-white">Member Benefits</h4>
                         </div>
                         <ul class="space-y-2">
-                            <li class="flex items-start gap-2 text-sm text-slate-600">
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
                                 <i class="fa-solid fa-check text-[#0ea5e9] mt-1"></i>
                                 <span>Access to exclusive workshops and bootcamps</span>
                             </li>
-                            <li class="flex items-start gap-2 text-sm text-slate-600">
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
                                 <i class="fa-solid fa-check text-[#0ea5e9] mt-1"></i>
                                 <span>Networking with industry professionals</span>
                             </li>
-                            <li class="flex items-start gap-2 text-sm text-slate-600">
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
                                 <i class="fa-solid fa-check text-[#0ea5e9] mt-1"></i>
                                 <span>Mentorship opportunities</span>
                             </li>
-                            <li class="flex items-start gap-2 text-sm text-slate-600">
+                            <li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
                                 <i class="fa-solid fa-check text-[#0ea5e9] mt-1"></i>
                                 <span>Participation in innovation challenges</span>
                             </li>
@@ -525,15 +613,15 @@
     </section>
 
     <!-- Activities Section -->
-    <section id="activities" class="py-20 bg-white">
+    <section id="activities" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Activities & Programs</h2>
-                <p class="text-lg text-slate-600">Empowering innovators through diverse initiatives</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Our Activities & Programs</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-300">Empowering innovators through diverse initiatives</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100">
+                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100 dark:bg-slate-800">
                     <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=2070&auto=format&fit=crop"
                         alt="Conference"
                         class="object-cover w-full h-full group-hover:scale-110 transition duration-500">
@@ -541,7 +629,7 @@
                         <h3 class="text-white font-bold text-xl">Annual Health-Tech Conferences</h3>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100">
+                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100 dark:bg-slate-800">
                     <img src="https://images.unsplash.com/photo-1504384308090-c54be3855833?q=80&w=2062&auto=format&fit=crop"
                         alt="Hackathon"
                         class="object-cover w-full h-full group-hover:scale-110 transition duration-500">
@@ -549,21 +637,21 @@
                         <h3 class="text-white font-bold text-xl">Innovation Challenges & Hackathons</h3>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100">
+                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100 dark:bg-slate-800">
                     <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop"
                         alt="Bootcamp" class="object-cover w-full h-full group-hover:scale-110 transition duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
                         <h3 class="text-white font-bold text-xl">Digital Health Bootcamps</h3>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100">
+                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100 dark:bg-slate-800">
                     <img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?q=80&w=2070&auto=format&fit=crop"
                         alt="Research" class="object-cover w-full h-full group-hover:scale-110 transition duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
                         <h3 class="text-white font-bold text-xl">Research Collaborations</h3>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100">
+                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100 dark:bg-slate-800">
                     <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop"
                         alt="Mentorship"
                         class="object-cover w-full h-full group-hover:scale-110 transition duration-500">
@@ -571,11 +659,182 @@
                         <h3 class="text-white font-bold text-xl">Mentorship & Capacity Building</h3>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100">
+                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-slate-100 dark:bg-slate-800">
                     <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop"
                         alt="Reports" class="object-cover w-full h-full group-hover:scale-110 transition duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
                         <h3 class="text-white font-bold text-xl">Publishing Reports & Innovations</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section id="founders" class="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Meet Our Founders</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-300">The visionaries behind HTiF</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Founder 1 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 text-center hover-lift border border-slate-100 dark:border-slate-700 transition-colors duration-300 group slide-up">
+                    <div class="relative w-24 h-24 mx-auto mb-4">
+                        <img src="images/founder.jpeg" alt="Aisha Baffa Abubakar" class="w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-lg group-hover:scale-105 transition duration-300">
+                        <div class="absolute bottom-0 right-0 bg-[#0ea5e9] text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900">
+                            <i class="fa-solid fa-user-nurse text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Aisha Baffa Abubakar</h3>
+                    <p class="text-[#0ea5e9] font-medium text-sm mb-2">Founder/President</p>
+                    <p class="text-purple-600 font-medium text-sm mb-3">Research Nurse-Midwife</p>
+                    <div class="flex justify-center gap-3 text-slate-400">
+                        <a href="#" class="hover:text-[#0ea5e9] transition"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                        <a href="#" class="hover:text-[#0ea5e9] transition"><i class="fa-brands fa-twitter text-lg"></i></a>
+                        <a href="#" class="hover:text-[#0ea5e9] transition"><i class="fa-solid fa-envelope text-lg"></i></a>
+                    </div>
+                </div>
+
+                <!-- Founder 2 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 text-center hover-lift border border-slate-100 dark:border-slate-700 transition-colors duration-300 group slide-up" style="animation-delay: 0.1s;">
+                    <div class="relative w-24 h-24 mx-auto mb-4">
+                        <img src="images/vice-pres.jpeg" alt="Abdulrahman Abdulrahman" class="w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-lg group-hover:scale-105 transition duration-300">
+                        <div class="absolute bottom-0 right-0 bg-purple-500 text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900">
+                            <i class="fa-solid fa-code text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Abdulrahman Abdulrahman</h3>
+                    <p class="text-purple-500 font-medium text-sm mb-2">Vice President</p>
+                    <p class="text-purple-600 font-medium text-sm mb-3">Full Stack Engineer</p>
+                    <div class="flex justify-center gap-3 text-slate-400">
+                        <a href="#" class="hover:text-purple-500 transition"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                        <a href="#" class="hover:text-purple-500 transition"><i class="fa-brands fa-github text-lg"></i></a>
+                        <a href="#" class="hover:text-purple-500 transition"><i class="fa-solid fa-globe text-lg"></i></a>
+                    </div>
+                </div>
+
+                <!-- Founder 3 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 text-center hover-lift border border-slate-100 dark:border-slate-700 transition-colors duration-300 group slide-up" style="animation-delay: 0.2s;">
+                    <div class="relative w-24 h-24 mx-auto mb-4">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=256&auto=format&fit=crop" alt="Abdulhalim Muhd Yaro" class="w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-lg group-hover:scale-105 transition duration-300">
+                        <div class="absolute bottom-0 right-0 bg-teal-500 text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900">
+                            <i class="fa-solid fa-code text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Abdulhalim Muhd Yaro</h3>
+                    <p class="text-teal-500 font-medium text-sm mb-2">Secretary General</p>
+                    <p class="text-teal-600 font-medium text-sm mb-3">Software engineer</p>
+                    <div class="flex justify-center gap-3 text-slate-400">
+                        <a href="#" class="hover:text-teal-500 transition"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                        <a href="#" class="hover:text-teal-500 transition"><i class="fa-brands fa-twitter text-lg"></i></a>
+                        <a href="#" class="hover:text-teal-500 transition"><i class="fa-solid fa-envelope text-lg"></i></a>
+                    </div>
+                </div>
+
+                <!-- Founder 4 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 text-center hover-lift border border-slate-100 dark:border-slate-700 transition-colors duration-300 group slide-up" style="animation-delay: 0.3s;">
+                    <div class="relative w-24 h-24 mx-auto mb-4">
+                        <img src="images/patron.jpeg" alt="Amina Suleiman Rajah" class="w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-lg group-hover:scale-105 transition duration-300">
+                        <div class="absolute bottom-0 right-0 bg-pink-500 text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900">
+                            <i class="fa-solid fa-user-doctor text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Amina Suleiman Rajah</h3>
+                    <p class="text-pink-500 font-medium text-sm mb-2">Senior Adviser/Patron</p>
+                    <p class="text-pink-600 font-medium text-sm mb-3"></p>
+                    <div class="flex justify-center gap-3 text-slate-400">
+                        <a href="#" class="hover:text-pink-500 transition"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                        <a href="#" class="hover:text-pink-500 transition"><i class="fa-brands fa-twitter text-lg"></i></a>
+                        <a href="#" class="hover:text-pink-500 transition"><i class="fa-solid fa-envelope text-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">What Our Members Say</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-300">Stories of impact from the HTiF community</p>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Slider Container -->
+                <div class="overflow-hidden rounded-2xl bg-white dark:bg-slate-900 shadow-xl border border-slate-100 dark:border-slate-700">
+                    <div id="testimonial-slider" class="flex transition-transform duration-500 ease-in-out">
+                        <!-- Testimonial 1 -->
+                        <div class="w-full flex-shrink-0 p-8 md:p-12">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="w-20 h-20 rounded-full overflow-hidden mb-6 border-4 border-blue-100 dark:border-blue-900">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex gap-1 text-yellow-400 mb-6 text-sm">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <blockquote class="text-xl md:text-2xl text-slate-700 dark:text-slate-300 font-medium italic mb-8">
+                                    "Joining HTiF has been a game-changer for my career. The mentorship and networking opportunities helped me launch my health-tech startup within a year."
+                                </blockquote>
+                                <div>
+                                    <div class="font-bold text-slate-900 dark:text-white text-lg">Sarah Johnson</div>
+                                    <div class="text-[#0ea5e9] text-sm font-medium">Biomedical Engineer</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="w-full flex-shrink-0 p-8 md:p-12">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="w-20 h-20 rounded-full overflow-hidden mb-6 border-4 border-blue-100 dark:border-blue-900">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex gap-1 text-yellow-400 mb-6 text-sm">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <blockquote class="text-xl md:text-2xl text-slate-700 dark:text-slate-300 font-medium italic mb-8">
+                                    "The hackathons organized by HTiF are world-class. It's amazing to see so many young minds collaborating to solve real-world healthcare problems."
+                                </blockquote>
+                                <div>
+                                    <div class="font-bold text-slate-900 dark:text-white text-lg">David Chen</div>
+                                    <div class="text-[#0ea5e9] text-sm font-medium">Software Developer</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 3 -->
+                        <div class="w-full flex-shrink-0 p-8 md:p-12">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="w-20 h-20 rounded-full overflow-hidden mb-6 border-4 border-blue-100 dark:border-blue-900">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex gap-1 text-yellow-400 mb-6 text-sm">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <blockquote class="text-xl md:text-2xl text-slate-700 dark:text-slate-300 font-medium italic mb-8">
+                                    "As a medical student, I wanted to understand how technology impacts patient care. HTiF provided the perfect platform to bridge that gap."
+                                </blockquote>
+                                <div>
+                                    <div class="font-bold text-slate-900 dark:text-white text-lg">Dr. Amina Bello</div>
+                                    <div class="text-[#0ea5e9] text-sm font-medium">Medical Resident</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Controls -->
+                    <button id="prev-slide" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white dark:bg-slate-800 shadow-lg text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-[#0ea5e9] hover:text-white transition z-10">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button id="next-slide" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white dark:bg-slate-800 shadow-lg text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-[#0ea5e9] hover:text-white transition z-10">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    
+                    <!-- Dots -->
+                    <div class="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10">
+                        <button class="w-3 h-3 rounded-full bg-[#0ea5e9] dot-indicator" data-slide="0"></button>
+                        <button class="w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-600 dot-indicator hover:bg-[#0ea5e9] transition" data-slide="1"></button>
+                        <button class="w-3 h-3 rounded-full bg-slate-300 dark:bg-slate-600 dot-indicator hover:bg-[#0ea5e9] transition" data-slide="2"></button>
                     </div>
                 </div>
             </div>
@@ -619,6 +878,109 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">Get in Touch</h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-300 mb-10">
+                        Have questions about membership, partnership, or our programs? We'd love to hear from you.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-[#0ea5e9] flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Email Us</h3>
+                                <p class="text-slate-600 dark:text-slate-400">info@htif.com.ng</p>
+                                <p class="text-slate-600 dark:text-slate-400">partnerships@htif.com.ng</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Visit Us</h3>
+                                <p class="text-slate-600 dark:text-slate-400">Innovation Hub Lab,<br>Civic Center, Capital City University,<br>Kano, Nigeria</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-teal-50 dark:bg-teal-900/30 flex items-center justify-center text-teal-600 flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Call Us</h3>
+                                <p class="text-slate-600 dark:text-slate-400">+234 708 296 9823</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="mt-10 h-64 rounded-2xl overflow-hidden relative shadow-lg">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1951.368907050449!2d8.553661166521147!3d11.992635120016926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sng!4v1767160710698!5m2!1sen!2sng"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="opacity-90 hover:opacity-100 transition">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700">
+                    <form action="https://formspree.io/f/info@htif.com.ng" method="POST" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">First Name</label>
+                                <input type="text" name="firstName" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[#0ea5e9] text-slate-900 dark:text-white transition" placeholder="John">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Last Name</label>
+                                <input type="text" name="lastName" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[#0ea5e9] text-slate-900 dark:text-white transition" placeholder="Doe">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email Address</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[#0ea5e9] text-slate-900 dark:text-white transition" placeholder="john@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Subject</label>
+                            <select name="subject" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[#0ea5e9] text-slate-900 dark:text-white transition">
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Membership Application">Membership Application</option>
+                                <option value="Partnership Opportunity">Partnership Opportunity</option>
+                                <option value="Technical Support">Technical Support</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message</label>
+                            <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[#0ea5e9] text-slate-900 dark:text-white transition" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-500/30 transition transform hover:-translate-y-1">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-[#0ea5e9] hover:bg-[#0284c7] text-white w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform translate-y-20 opacity-0 z-50">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <!-- Footer -->
     <footer class="bg-[#0f172a] text-slate-400 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -637,8 +999,7 @@
                         </div>
                     </div>
                     <p class="text-sm leading-relaxed mb-6">
-                        A youth-driven, non-profit association advancing innovation in health technology across Africa
-                        and beyond.
+                        The Health Tech Innovators Forum (HTiF) is a collaborative, youth-driven, non-profit association dedicated to advancing innovation in health technology.
                     </p>
                 </div>
 
@@ -685,7 +1046,7 @@
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
                     </div>
-                    <a href="mailto:info@htif.org" class="text-sm hover:text-[#0ea5e9] transition">info@htif.org</a>
+                    <a href="mailto:info@htif.com.ng" class="text-sm hover:text-[#0ea5e9] transition">info@htif.com.ng</a>
                 </div>
             </div>
 
@@ -699,6 +1060,30 @@
             </div>
         </div>
     </footer>
+
+    <!-- Expanded WhatsApp Button Container -->
+    <div id="whatsapp-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-2">
+        <!-- WhatsApp Options -->
+        <div id="whatsapp-options" class="hidden flex-col items-center space-y-2 mr-2">
+            <button id="whatsapp-cancel" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full shadow-lg flex items-center transition-all duration-300">
+                <span class="mr-2">Cancel</span>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <a href="https://wa.me/2347082969823" target="_blank" id="whatsapp-contact" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-2 rounded-full shadow-lg flex items-center transition-all duration-300">
+                <span class="mr-2">Contact</span>
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+        </div>
+        <!-- Main WhatsApp Button -->
+        <button id="whatsapp-expand" class="bg-[#25D366] hover:bg-[#128C7E] text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-24 bg-[#0ea5e9] hover:bg-[#0284c7] text-white w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform translate-y-20 opacity-0 z-50">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>

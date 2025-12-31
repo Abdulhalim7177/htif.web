@@ -33,20 +33,30 @@
 
 /* Smooth Animations */
 .fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+.fade-in.animate-active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .slide-up {
-    animation: slideUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(40px); }
+.slide-up.animate-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Keyframes (kept for reference but unused by JS observer approach above unless manual) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -180,4 +190,29 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #0284c7, #7c3aed);
+}
+
+/* Marquee Animation */
+.animate-marquee {
+    animation: marquee 25s linear infinite;
+}
+
+.animate-marquee2 {
+    animation: marquee2 25s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee2 {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0%); }
+}
+
+/* Testimonial Active Dot */
+.dot-indicator.active {
+    background-color: #0ea5e9;
+    transform: scale(1.2);
 }
